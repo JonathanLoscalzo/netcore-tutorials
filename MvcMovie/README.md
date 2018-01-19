@@ -20,3 +20,5 @@ dotnet new mvc
 - Add View to Welcome/Index
 
 - Modify Layout, add Movies/Index link
+
+- Add Movie List to ViewBag from HelloWorld view
