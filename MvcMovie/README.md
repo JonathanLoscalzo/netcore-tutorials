@@ -13,7 +13,6 @@ dotnet new mvc
 ---------------
   
 
-
 - Add HelloWorldController
 
-- 
+- Add Welcome Method with parameters
