@@ -20,9 +20,29 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString = null)
         {
-            return View(await _context.Movie.ToListAsync());
+            // return View(await _context.Movie.ToListAsync());
+
+            // La primera línea del método de acción Index crea una consulta LINQ para seleccionar las películas:
+            // En este momento solo se define la consulta, no se ejecuta en la base de datos.
+            var movies = from m in _context.Movie
+                         select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Title.Contains(searchString));
+            }
+
+            // Esto significa que la evaluación de una expresión 
+            // se aplaza hasta que su valor realizado se repita realmente o se llame al método ToListAsync
+            return View(await movies.ToListAsync());
+        }
+
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on " + searchString;
         }
 
         // GET: Movies/Details/5
