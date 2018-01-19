@@ -18,3 +18,5 @@ dotnet new mvc
 - Add Welcome Method with parameters
 
 - Add View to Welcome/Index
+
+- Modify Layout, add Movies/Index link
