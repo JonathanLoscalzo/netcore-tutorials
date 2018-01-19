@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie.Models;
 using MvcMovie.db;
+using MvcMovie.ViewModels;
 
 namespace MvcMovie.Controllers
 {
@@ -20,23 +21,51 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index(string searchString = null)
-        {
-            // return View(await _context.Movie.ToListAsync());
+        // public async Task<IActionResult> Index(string searchString = null)
+        // {
+        //     // return View(await _context.Movie.ToListAsync());
 
-            // La primera línea del método de acción Index crea una consulta LINQ para seleccionar las películas:
-            // En este momento solo se define la consulta, no se ejecuta en la base de datos.
+        //     // La primera línea del método de acción Index crea una consulta LINQ para seleccionar las películas:
+        //     // En este momento solo se define la consulta, no se ejecuta en la base de datos.
+        //     var movies = from m in _context.Movie
+        //                  select m;
+
+        //     if (!string.IsNullOrEmpty(searchString))
+        //     {
+        //         movies = movies.Where(s => s.Title.Contains(searchString));
+        //     }
+
+        //     // Esto significa que la evaluación de una expresión 
+        //     // se aplaza hasta que su valor realizado se repita realmente o se llame al método ToListAsync
+        //     return View(await movies.ToListAsync());
+        // }
+
+        // Requires using Microsoft.AspNetCore.Mvc.Rendering;
+        public async Task<IActionResult> Index(string movieGenre, string searchString)
+        {
+            // Use LINQ to get list of genres.
+            IQueryable<string> genreQuery = from m in _context.Movie
+                                            orderby m.Genre
+                                            select m.Genre;
+
             var movies = from m in _context.Movie
                          select m;
 
-            if (!string.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(searchString))
             {
                 movies = movies.Where(s => s.Title.Contains(searchString));
             }
 
-            // Esto significa que la evaluación de una expresión 
-            // se aplaza hasta que su valor realizado se repita realmente o se llame al método ToListAsync
-            return View(await movies.ToListAsync());
+            if (!String.IsNullOrEmpty(movieGenre))
+            {
+                movies = movies.Where(x => x.Genre == movieGenre);
+            }
+
+            var movieGenreVM = new MovieGenreViewModel();
+            movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync());
+            movieGenreVM.movies = await movies.ToListAsync();
+
+            return View(movieGenreVM);
         }
 
         [HttpPost]
