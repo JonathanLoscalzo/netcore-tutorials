@@ -38,6 +38,7 @@ namespace MvcMovie
 
             app.UseStaticFiles();
 
+            // https://docs.microsoft.com/es-es/aspnet/core/mvc/controllers/routing
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
