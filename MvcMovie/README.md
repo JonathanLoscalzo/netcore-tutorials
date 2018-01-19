@@ -16,3 +16,5 @@ dotnet new mvc
 - Add HelloWorldController
 
 - Add Welcome Method with parameters
+
+- Add View to Welcome/Index
