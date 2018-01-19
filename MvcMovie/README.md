@@ -33,3 +33,5 @@ dotnet new mvc
 - Perform Initial Migration: 
 dotnet ef migrations add InitialCreate => create DB with the model specified in DbContext
 dotnet ef database update => execute the method *up* from InitialCreation migration
+
+- Add SeedData, SeedDataClass and Seed initialize in Program.main
