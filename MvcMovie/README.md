@@ -24,3 +24,12 @@ dotnet new mvc
 - Add Movie List to ViewBag from HelloWorld view
 
 - Add welcome view
+
+- Add Movie model
+- Prepare the project for scaffolding, add codetools in csproj
+- add MvcMoviesContext
+- add to ConfigureService, de DBContext injection, AddDbContext<
+- apply the next command: ** dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries **. this create CRUD views, 
+- Perform Initial Migration: 
+dotnet ef migrations add InitialCreate => create DB with the model specified in DbContext
+dotnet ef database update => execute the method *up* from InitialCreation migration

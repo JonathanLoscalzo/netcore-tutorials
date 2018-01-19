@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MvcMovie.db;
 
 namespace MvcMovie
 {
@@ -22,6 +24,9 @@ namespace MvcMovie
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddDbContext<MvcMovieContext>(options =>
+                options.UseSqlite("Data Source=MvcMovie.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
