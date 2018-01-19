@@ -35,3 +35,5 @@ dotnet ef migrations add InitialCreate => create DB with the model specified in 
 dotnet ef database update => execute the method *up* from InitialCreation migration
 
 - Add SeedData, SeedDataClass and Seed initialize in Program.main
+- Add DisplayDataAnnotation, See https://docs.microsoft.com/es-es/aspnet/core/mvc/views/tag-helpers/intro for tagHelpers custom's :)
+
