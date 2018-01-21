@@ -12,3 +12,7 @@ Microsoft.AspNetCore.All Has EFcore.InMemory
 
 ### create DBContext
 Create a db context. The db context is the main class that coordinates Entity Framework functionality for a given data model
+
+### register db context
+the database context is registered with the dependency injection container.
+- USE: services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
