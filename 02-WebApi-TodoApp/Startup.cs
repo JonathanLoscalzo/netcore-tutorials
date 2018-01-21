@@ -40,7 +40,7 @@ namespace TodoApi
                         Version = "v1",
                         Description = "A simple example ASP.NET Core Web API",
                         TermsOfService = "None",
-                        Contact = new Contact { Name = "Shayne Boyer", Email = "", Url = "https://twitter.com/spboyer" },
+                        Contact = new Contact { Name = "Jonathan Loscalzo", Email = "jonathan.r.loscalzo@gmail.com", Url = "https://twitter.com/jony_loscal" },
                         License = new License { Name = "Use under LICX", Url = "https://example.com/license" }
                     });
 

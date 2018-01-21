@@ -33,4 +33,7 @@ https://docs.microsoft.com/es-es/aspnet/core/tutorials/web-api-help-pages-using-
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
 add swagger to the startup class (middleware).
 Add xml summary and detect for Swagger 
+Add DataAnnotations to the model. The presence of this attr change de behavior of the SwaggerUI and modified SwaggerJson
+Add [Produces("application/json")] to the ApiController. The actions support a return content type of application/json
+
 
