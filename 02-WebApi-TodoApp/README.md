@@ -42,8 +42,13 @@ without the documentation in Swagger UI, the consumer lacks knowledge of these o
 - <response code="201">Returns the newly-created item</response>
 - <response code="400">If the item is null</response>            
 
-*Change de UI*
+*Customize the SwaggerUI*
+For serve static files, add: <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
+and add in the startup the installed middleware.
 
+Get from https://github.com/swagger-api/swagger-ui/tree/2.x/dist, 
+And create a folder wwwroot/swagger/ui , copy the content.
+Add /swagger/ui/css/custom.css 
 
 
 
