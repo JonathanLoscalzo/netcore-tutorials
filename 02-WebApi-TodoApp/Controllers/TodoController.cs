@@ -20,6 +20,25 @@ namespace TodoApi.Controllers
                 _context.TodoItems.Add(new TodoItem { Name = "Item1" });
                 _context.SaveChanges();
             }
-        }       
+        }
+
+        // get /api/todo
+        [HttpGet]
+        public IEnumerable<TodoItem> GetAll()
+        {
+            return _context.TodoItems.ToList();
+        }
+
+        // get /api/todo/{id}
+        [HttpGet("{id}", Name = "GetTodo")]
+        public IActionResult GetById(long id)
+        {
+            var item = _context.TodoItems.FirstOrDefault(t => t.Id == id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return new ObjectResult(item);
+        }
     }
 }
