@@ -25,6 +25,7 @@ dotnet new mvc
 
 - Add welcome view
 
+#### Create a Movie Model
 - Add Movie model
 - Prepare the project for scaffolding, add codetools in csproj
 - add MvcMoviesContext
@@ -36,4 +37,17 @@ dotnet ef database update => execute the method *up* from InitialCreation migrat
 
 - Add SeedData, SeedDataClass and Seed initialize in Program.main
 - Add DisplayDataAnnotation, See https://docs.microsoft.com/es-es/aspnet/core/mvc/views/tag-helpers/intro for tagHelpers custom's :)
+
+#### Add new field
+- Add Rating in Movie Model
+- Update Bind attribute for both, the create and update methods to include rating property
+- Update Movie/Index view, for display the Rating prop.
+- Disconnect db with command: dotnet ef database drop => not for production! https://docs.microsoft.com/es-es/aspnet/core/tutorials/first-mvc-app-xplat/new-field
+- update SeedData so that it provides a value for Rating
+- Update others view for display Rating prop
+- Add a new Migration: dotnet ef migrations add Add_Movie_rating
+- Execute: dotnet ef database update
+
+#### Add validations
+- add validations to the model
 
