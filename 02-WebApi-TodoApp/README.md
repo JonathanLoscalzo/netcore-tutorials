@@ -26,3 +26,10 @@ https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing#attribute-r
 
 ### Implement crud operations
 Add Create, Update and Delete operations
+
+### Add Swagger!
+https://docs.microsoft.com/es-es/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio 
+#### Swaggerbuckle
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
+add swagger to the startup class (middleware).
+
