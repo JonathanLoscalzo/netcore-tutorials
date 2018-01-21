@@ -22,3 +22,7 @@ the database context is registered with the dependency injection container.
 Defines an empty controller class. In the next sections, methods are added to implement the API.
 The constructor uses Dependency Injection to inject the database context (TodoContext) into the controller. The database context is used in each of the CRUD methods in the controller.
 The constructor adds an item to the in-memory database if one doesn't exist.
+https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing#attribute-routing-with-httpverb-attributes
+
+### Implement crud operations
+Add Create, Update and Delete operations

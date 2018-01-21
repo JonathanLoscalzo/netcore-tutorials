@@ -40,5 +40,61 @@ namespace TodoApi.Controllers
             }
             return new ObjectResult(item);
         }
+
+        /*The [FromBody] attribute tells MVC to get the value of the to-do item from the body of the HTTP request. */
+        [HttpPost]
+        public IActionResult Create([FromBody] TodoItem item)
+        {
+            if (item == null)
+            {
+                return BadRequest();
+            }
+
+            _context.TodoItems.Add(item);
+            _context.SaveChanges();
+
+            /*
+            Devuelve una respuesta 201. HTTP 201 es la respuesta estándar para un método HTTP POST que crea un recurso en el servidor.
+            Agrega un encabezado de ubicación a la respuesta. El encabezado de ubicación especifica el URI de la tarea pendiente recién creada. Vea 10.2.2 201 Created (10.2.2 201 creada).
+            Usa la ruta denominada "GetTodo" para crear la dirección URL. La ruta con nombre "GetTodo" se define en GetById:   
+             */
+            return CreatedAtRoute("GetTodo", new { id = item.Id }, item);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(long id, [FromBody] TodoItem item)
+        {
+            if (item == null || item.Id != id)
+            {
+                return BadRequest();
+            }
+
+            var todo = _context.TodoItems.FirstOrDefault(t => t.Id == id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            todo.IsComplete = item.IsComplete;
+            todo.Name = item.Name;
+
+            _context.TodoItems.Update(todo);
+            _context.SaveChanges();
+            return new NoContentResult();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            var todo = _context.TodoItems.FirstOrDefault(t => t.Id == id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            _context.TodoItems.Remove(todo);
+            _context.SaveChanges();
+            return new NoContentResult();
+        }
     }
 }
