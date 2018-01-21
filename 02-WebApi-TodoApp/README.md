@@ -16,3 +16,9 @@ Create a db context. The db context is the main class that coordinates Entity Fr
 ### register db context
 the database context is registered with the dependency injection container.
 - USE: services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
+
+### Add TodoController
+
+Defines an empty controller class. In the next sections, methods are added to implement the API.
+The constructor uses Dependency Injection to inject the database context (TodoContext) into the controller. The database context is used in each of the CRUD methods in the controller.
+The constructor adds an item to the in-memory database if one doesn't exist.
