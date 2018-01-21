@@ -4,3 +4,11 @@ app from => https://docs.microsoft.com/es-es/aspnet/core/tutorials/web-api-vsc
 - A model is an object that represents the data in the app. In this case, the only model is a to-do item. Models are represented as C# classes, also know as Plain Old C# Object (POCOs).
 - A controller is an object that handles HTTP requests and creates the HTTP response. This app has a single controller.
 - To keep the tutorial simple, the app doesn’t use a persistent database. The sample app stores to-do items in an in-memory database.
+
+### add support to entity framework
+Microsoft.AspNetCore.All Has EFcore.InMemory
+
+### add TodoItem model
+
+### create DBContext
+Create a db context. The db context is the main class that coordinates Entity Framework functionality for a given data model
