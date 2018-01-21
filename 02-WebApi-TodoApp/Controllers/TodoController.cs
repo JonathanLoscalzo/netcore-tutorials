@@ -42,6 +42,24 @@ namespace TodoApi.Controllers
         }
 
         /*The [FromBody] attribute tells MVC to get the value of the to-do item from the body of the HTTP request. */
+        /// <summary>
+        /// Creates a TodoItem.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Todo
+        ///     {
+        ///        "id": 1,
+        ///        "name": "Item1",
+        ///        "isComplete": true
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="item"></param>
+        /// <returns>A newly-created TodoItem</returns>
+        /// <response code="201">Returns the newly-created item</response>
+        /// <response code="400">If the item is null</response>    
         [HttpPost]
         public IActionResult Create([FromBody] TodoItem item)
         {
@@ -83,6 +101,10 @@ namespace TodoApi.Controllers
             return new NoContentResult();
         }
 
+        /// <summary>
+        /// Deletes a specific TodoItem.
+        /// </summary>
+        /// <param name="id"></param>   
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {

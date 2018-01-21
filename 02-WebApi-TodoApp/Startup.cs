@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TodoApi.db;
 using Swashbuckle.AspNetCore.Swagger;
+using System.IO;
 
 namespace TodoApi
 {
@@ -27,13 +28,27 @@ namespace TodoApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
-            
+
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.SwaggerDoc(
+                    "v1",
+                    new Info
+                    {
+                        Title = "My API",
+                        Version = "v1",
+                        Description = "A simple example ASP.NET Core Web API",
+                        TermsOfService = "None",
+                        Contact = new Contact { Name = "Shayne Boyer", Email = "", Url = "https://twitter.com/spboyer" },
+                        License = new License { Name = "Use under LICX", Url = "https://example.com/license" }
+                    });
+
+                var basePath = AppContext.BaseDirectory;
+                var xmlPath = Path.Combine(basePath, "TodoApi.xml"); 
+                c.IncludeXmlComments(xmlPath);
             });
-            
+
             services.AddMvc();
         }
 

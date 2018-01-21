@@ -32,4 +32,5 @@ https://docs.microsoft.com/es-es/aspnet/core/tutorials/web-api-help-pages-using-
 #### Swaggerbuckle
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
 add swagger to the startup class (middleware).
+Add xml summary and detect for Swagger 
 
