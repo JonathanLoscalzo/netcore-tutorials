@@ -35,5 +35,15 @@ add swagger to the startup class (middleware).
 Add xml summary and detect for Swagger 
 Add DataAnnotations to the model. The presence of this attr change de behavior of the SwaggerUI and modified SwaggerJson
 Add [Produces("application/json")] to the ApiController. The actions support a return content type of application/json
+Add Description of response type: 
+- [ProducesResponseType(typeof(TodoItem), 201)]
+- [ProducesResponseType(typeof(TodoItem), 400)]
+without the documentation in Swagger UI, the consumer lacks knowledge of these outcomes.
+- <response code="201">Returns the newly-created item</response>
+- <response code="400">If the item is null</response>            
+
+*Change de UI*
+
+
 
 

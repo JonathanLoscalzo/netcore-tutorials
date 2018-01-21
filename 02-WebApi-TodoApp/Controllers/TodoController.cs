@@ -61,6 +61,8 @@ namespace TodoApi.Controllers
         /// <response code="201">Returns the newly-created item</response>
         /// <response code="400">If the item is null</response>    
         [HttpPost]
+        [ProducesResponseType(typeof(TodoItem), 201)]
+        [ProducesResponseType(typeof(TodoItem), 400)]
         public IActionResult Create([FromBody] TodoItem item)
         {
             if (item == null)
